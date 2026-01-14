@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zwischen Körpern</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ================= HEADER (BLEIBT) ================= -->
+    <header class="site-header">
+        
+        <div class="header-inner">
+
+            <!-- Titel links -->
+            <div class="header-title">
+                <h1>Zwischen Körpern</h1>
+            </div>
+
+            <!-- Infos rechts -->
+            <div class="header-meta">
+                <p>Eine Ausstellung des Leistungsfachs Kunst</p>
+                <p>📍 Obere Pfalzgrafstraße 1, Freising</p>
+                <p>📅 17.–18. Januar 2026 von 14:00–18:00 Uhr</p>
+                <a href="https://instagram.com/zwischen_koerpern" target="_blank" class="instagram-link header-instagram">
+                    📷 @zwischenkoerpern instagram
+                </a>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- ================= STARTANSICHT (NUR BILDER) ================= -->
+    <section class="intro intro-images">
+        <!-- absichtlich leer: Random-Bilder laufen wie bisher -->
+        <div class="scroll-arrow">↓</div>
+    </section>
+
+    <!-- ================= TEXTANSICHT (NEU) ================= -->
+    <section class="intro intro-text">
+        <div class="intro-content">
+            <p class="subtitle">
+                Die Ausstellung "Zwischen Körpern" präsentiert die Werke der 13. Jahrgangsstufe 
+                des Camerloher-Gymnasiums Freising aus dem Leistungsfach Kunst.
+            </p>
+
+            <div class="main-text">
+                <p>
+                    "Zwischen Körpern" thematisiert die vielschichtigen Beziehungen zwischen Menschen, 
+                    Körpern und Räumen. Die Werke untersuchen emotionale, soziale und psychologische 
+                    Zwischenräume und zeigen, wie Körper miteinander in Beziehung treten, sich 
+                    beeinflussen oder einander fremd bleiben.
+                </p>
+
+                <p>
+                    Die Arbeiten bewegen sich zwischen Intimität und Inszenierung, zwischen Berührung 
+                    und Abgrenzung. Raum, Licht und Materialität eröffnen vielschichtige Perspektiven 
+                    auf das Dazwischen.
+                </p>
+            </div>
+
+            <div class="concert-box">
+                <h3>🎵 Eröffnungskonzert</h3>
+                <p class="concert-time">Samstag, 17. Januar 2026 · 14:00 Uhr</p>
+                <p class="concert-description">
+                    Back to Business begleitet die Ausstellungseröffnung mit alternativer Rockmusik. 
+
+                </p>
+                <a href="https://instagram.com/backtobusiness_music" target="_blank" class="instagram-link concert-instagram">
+                    📷 @back to business instagram
+                </a>
+            </div>
+
+            <div class="scroll-hint">
+                ↓ zur Künstler:innen-Sektion
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= KÜNSTLERBEREICH ================= -->
+    <div class="artists-wrapper">
+        <section class="fullscreen-section" data-artist="helena_baur">
+            <div class="overlay">
+                <h2>Helena Baur</h2>
+            </div>
+        </section>
+
+        <section class="fullscreen-section" data-artist="anna_dantele">
+            <div class="overlay">
+                <h2>Anna Dantele</h2>
+            </div>
+        </section>
+
+        <section class="fullscreen-section" data-artist="annika_krippner">
+            <div class="overlay">
+                <h2>Annika Krippner</h2>
+            </div>
+        </section>
+
+        <section class="fullscreen-section" data-artist="emily_stojan">
+            <div class="overlay">
+                <h2>Emily Stojan</h2>
+            </div>
+        </section>
+
+        <section class="fullscreen-section" data-artist="gian_maritz">
+            <div class="overlay">
+                <h2>Gian Maritz</h2>
+            </div>
+        </section>
+
+        <section class="fullscreen-section" data-artist="hannah_kirchmann">
+            <div class="overlay">
+                <h2>Hannah Kirchmann</h2>
+            </div>
+        </section>
+
+        <section class="fullscreen-section" data-artist="hannah_wagner">
+            <div class="overlay">
+                <h2>Hannah Wagner</h2>
+            </div>
+        </section>
+
+        <section class="fullscreen-section" data-artist="jack_lang">
+            <div class="overlay">
+                <h2>Jack Lang</h2>
+            </div>
+        </section>
+
+        <section class="fullscreen-section" data-artist="lara_jahn">
+            <div class="overlay">
+                <h2>Lara Jahn</h2>
+            </div>
+        </section>
+
+        <section class="fullscreen-section" data-artist="marlene_goels">
+            <div class="overlay">
+                <h2>Marlene Göls</h2>
+            </div>
+        </section>
+
+        <section class="fullscreen-section" data-artist="marlene_lasch">
+            <div class="overlay">
+                <h2>Marlene Lasch</h2>
+            </div>
+        </section>
+
+        <section class="fullscreen-section" data-artist="veronica_hartmann">
+            <div class="overlay">
+                <h2>Veronica Hartmann</h2>
+            </div>
+        </section>
+
+        <section class="fullscreen-section" data-artist="vitus_jaap">
+            <div class="overlay">
+                <h2>Vitus Jaap</h2>
+            </div>
+        </section>
+
+        <!-- Dots werden dynamisch von JS generiert -->
+        <div class="dots" id="dots-container"></div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
