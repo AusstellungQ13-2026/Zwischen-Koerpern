@@ -49,27 +49,74 @@ instagramLinks.forEach(link => {
 
 /* ================= RANDOM INTRO BILDER ================= */
 
-const totalImages = 5;
-let currentImageIndex = Math.floor(Math.random() * totalImages) + 1;
+// Dynamically detect numbered images in images/start_page and rotate them.
+const startPageFormats = ['jpg', 'jpeg', 'png', 'JPG', 'JPEG', 'PNG'];
+const maxIntroChecks = 50; // try up to N numbered files (1..N)
+let availableIntroImages = [];
+let currentImageIndex = 0; // index into availableIntroImages
 
-function setIntroBackground(index) {
-    intro.style.backgroundImage = `url('images/start_page/${index}.jpeg')`;
+function setIntroBackgroundByPath(path) {
+    intro.style.backgroundImage = `url('${path}')`;
     intro.style.backgroundSize = 'cover';
     intro.style.backgroundPosition = 'center';
     intro.style.transition = 'background-image 1s ease-in-out';
 }
 
-setIntroBackground(currentImageIndex);
+function startRotation() {
+    if (availableIntroImages.length <= 1) return;
+    setInterval(() => {
+        let newIndex;
+        do {
+            newIndex = Math.floor(Math.random() * availableIntroImages.length);
+        } while (newIndex === currentImageIndex && availableIntroImages.length > 1);
+        currentImageIndex = newIndex;
+        setIntroBackgroundByPath(availableIntroImages[currentImageIndex]);
+    }, 5000);
+}
 
-setInterval(() => {
-    let newIndex;
-    do {
-        newIndex = Math.floor(Math.random() * totalImages) + 1;
-    } while (newIndex === currentImageIndex);
+function detectIntroImages() {
+    const checks = [];
+    for (let i = 1; i <= maxIntroChecks; i++) {
+        startPageFormats.forEach(format => {
+            checks.push(new Promise(resolve => {
+                const img = new Image();
+                const path = `images/start_page/${i}.${format}`;
+                img.onload = () => resolve(path);
+                img.onerror = () => resolve(null);
+                img.src = path;
+            }));
+        });
+    }
 
-    currentImageIndex = newIndex;
-    setIntroBackground(currentImageIndex);
-}, 5000);
+    return Promise.all(checks).then(results => {
+        // keep unique successful paths
+        const set = new Set(results.filter(Boolean));
+        availableIntroImages = Array.from(set);
+
+        // sort numerically by the numbered filename (1,2,3...)
+        availableIntroImages.sort((a, b) => {
+            const num = p => {
+                const m = p.match(/\/start_page\/(\d+)\./);
+                return m ? parseInt(m[1], 10) : Infinity;
+            };
+            return num(a) - num(b);
+        });
+
+        // fallback to the original single image if nothing found
+        if (availableIntroImages.length === 0) {
+            availableIntroImages = ['images/start_page/1.jpeg'];
+        }
+
+        // ensure that the first shown image is number 1 if it exists
+        const idx1 = availableIntroImages.findIndex(p => /\/start_page\/1\./.test(p));
+        currentImageIndex = idx1 >= 0 ? idx1 : 0;
+        setIntroBackgroundByPath(availableIntroImages[currentImageIndex]);
+        startRotation();
+    });
+}
+
+// kick off detection and rotation
+detectIntroImages();
 
 /* ================= KÜNSTLER HINTERGRUNDBILDER SETZEN ================= */
 
